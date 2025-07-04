@@ -16,4 +16,13 @@ contract MyToken is ERC20, Ownable {
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
     }
+
+    /**
+     * @dev Burns a specific amount of tokens.
+     * Only callable by the contract owner.
+     */
+    function burn(uint256 amount) public {
+        _burn(msg.sender, amount);
+        emit TokensBurned(msg.sender, amount);
+    }
 }
