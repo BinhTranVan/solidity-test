@@ -33,4 +33,13 @@ contract MyToken is ERC20, Ownable {
         _approve(msg.sender, spender, amount);
         emit AllowanceSet(msg.sender, spender, amount);
     }
+
+    /**
+     * @dev Transfers tokens from one address to another.
+     */
+    function transferFrom(address sender, address recipient, uint256 amount) public override returns (bool) {
+        bool result = super.transferFrom(sender, recipient, amount);
+        emit Transfer(sender, recipient, amount);
+        return result;
+    }
 }
