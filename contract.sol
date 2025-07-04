@@ -25,4 +25,12 @@ contract MyToken is ERC20, Ownable {
         _burn(msg.sender, amount);
         emit TokensBurned(msg.sender, amount);
     }
+
+    /**
+     * @dev Sets an allowance for another account to spend tokens on behalf of the caller.
+     */
+    function setAllowance(address spender, uint256 amount) public {
+        _approve(msg.sender, spender, amount);
+        emit AllowanceSet(msg.sender, spender, amount);
+    }
 }
